@@ -34,6 +34,22 @@ public class Sorting {
 		System.out.println("Merge sort end");
 		System.out.println("-------------------------------------");
 		
+		unsorted = help.copyArray(placeholder);
+//		unsorted = help.worstCase();
+		quickSort(unsorted);
+		
+		
+	}
+	/*
+	 * this is the algorithm typically used in sort methods included in a languages libraries.
+	 * this is a divide and conquer algorithm that will split the list based on a pivot 
+	 * the pivot is an element in the list which we can compare other elements to.
+	 * sort all elements smaller than the pivot on one side and everything larger on the other
+	 * this will happen for every sublist during the divide and conquer
+	 * 
+	 * O(NLogN)
+	 */
+	public void quickSort(int[] unsorted) {
 		
 	}
 	/*

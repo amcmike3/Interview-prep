@@ -2,6 +2,27 @@ package com.mcmichael.concepts.sorting;
 
 public class HelperMethod {
 	
+	public int partition(int[] unsorted, int low, int high) {
+		int pivot = unsorted[low];
+		int l = low;
+		int h = high;
+		while ( l< h) {
+			while (unsorted[l] <= pivot && l < h ) {
+				l++;
+			}
+			while (unsorted[h] > pivot) {
+				h--;
+			}
+			if ( l < h) {
+				swap(unsorted, l, h);
+			}
+		}
+		swap(unsorted, low, h);
+		
+		System.out.println("Pivot: " + pivot);
+		printList(unsorted);
+		return h;
+	}
 	
 	public void merge(int[] unsorted, int[] firstHalf, int[] secondHalf) {
 		int mergeIndex = 0 ;
