@@ -39,6 +39,11 @@ public class Sorting {
 	/*
 	 * merge sort operates much better because it uses divide and conquer.
 	 * it uses divide and conquer by recursively breaking down the list.
+	 * merge sort is not adaptive (does not break out early)
+	 * takes up extra space of O(N) (there are extra copies of the original array)
+	 * it is a stable sort (same number elements won't be swapped)
+	 * use merge sort when speed is necessary and extra memory (space) is available.
+	 * O(NLogN)
 	 */
 	private void mergeSort(int[] unsorted) {
 		
