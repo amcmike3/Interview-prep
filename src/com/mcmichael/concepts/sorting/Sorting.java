@@ -31,13 +31,23 @@ public class Sorting {
 		mergeSort(unsorted);
 		
 		System.out.println("-------------------------------------");
+		help.printList(unsorted);
 		System.out.println("Merge sort end");
 		System.out.println("-------------------------------------");
 		
+
+		
+		System.out.println("Quick sort start");
+		help.printList(unsorted);
+		
 		unsorted = help.copyArray(placeholder);
 //		unsorted = help.worstCase();
-		quickSort(unsorted);
+		quickSort(unsorted, 0, unsorted.length - 1);
 		
+		System.out.println("-------------------------------------");
+		help.printList(unsorted);
+		System.out.println("Quick sort end");
+		System.out.println("-------------------------------------");
 		
 	}
 	/*
@@ -49,7 +59,14 @@ public class Sorting {
 	 * 
 	 * O(NLogN)
 	 */
-	public void quickSort(int[] unsorted) {
+	public void quickSort(int[] unsorted, int low, int high) {
+		if (low >= high) {
+			return;
+		}
+		int pivotIndex = help.partition(unsorted, low, high);
+		quickSort(unsorted, low, pivotIndex - 1);
+		quickSort(unsorted, pivotIndex + 1, high);
+		
 		
 	}
 	/*

@@ -6,7 +6,7 @@ public class HelperMethod {
 		int pivot = unsorted[low];
 		int l = low;
 		int h = high;
-		while ( l< h) {
+		while ( l < h) {
 			while (unsorted[l] <= pivot && l < h ) {
 				l++;
 			}
