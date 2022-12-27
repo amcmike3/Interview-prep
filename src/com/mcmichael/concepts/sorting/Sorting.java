@@ -10,11 +10,14 @@ public class Sorting {
 	
 	private void run() {
 		int[] placeholder = randIntArr(10);
-		int[] unsorted = help.copyArray(placeholder);
-		selectionSort(unsorted);
-		unsorted = help.copyArray(placeholder);
+//		unsorted = help.copyArray(placeholder);
+		int[] unsorted = {10,9,8,7,6,5,4,3,2,1};
 		bubbleSort(unsorted);
-		unsorted = help.copyArray(placeholder);
+//		int[] unsorted = help.copyArray(placeholder);
+		unsorted = help.worstCase();
+		selectionSort(unsorted);
+//		unsorted = help.copyArray(placeholder);
+		unsorted = help.worstCase();
 		insertionSort(unsorted);
 		
 		
@@ -33,7 +36,7 @@ public class Sorting {
 		for(int i = 0; i < unsorted.length -1; i++) {
 			for (int j = i + 1; j > 0; j-- ) {
 				index++;
-				if(unsorted[j] < unsorted[i]) {
+				if(unsorted[j] < unsorted[j - 1]) {
 					help.swap(unsorted, j, j - 1);
 					help.printList(unsorted);
 				} else {
@@ -44,15 +47,38 @@ public class Sorting {
 		System.out.println("-------------------------------------");
 		help.printList(unsorted);
 		System.out.println("Insertion sort end " + index + " iterations");
+		System.out.println("-------------------------------------");
 	}
 	
-	
+//	Selection sort
+//		iterate through array for each index 
+//		each time you encounter a smaller number put it in the current index position
+//	 O(N^2)
+	private void selectionSort(int[] unsorted) {
+		System.out.println("Selection Sort start");
+		help.printList(unsorted); 
+		int index = 0;
+		for (int i = 0; i < unsorted.length; i++) {
+			for (int j = i; j < unsorted.length; j++) {
+				index++; 
+				if (unsorted[j] < unsorted[i]) {
+					help.swap(unsorted, i, j);
+					help.printList(unsorted);
+				}
+			}
+		}
+		
+		System.out.println("-------------------------------------");
+		help.printList(unsorted);
+		System.out.println("Selection Sort end " + index + " iterations");
+		System.out.println("-------------------------------------");
+	}
 	
 	/* for every pair of two elements in the array we compare and swap them to make the smaller of the two values leftmost.
 	 * bubble sort loses out on number of swaps compared to selection sort but average case performs better than selection sort.
 	 * this is because it is an adaptive algorithm (it exits if the list is sorted before every iteration has happened)
 	 * O(N^2)
-	*/
+	 */
 	private void bubbleSort(int[] unsorted) {
 		
 		System.out.println("Bubble Sort start");
@@ -76,30 +102,9 @@ public class Sorting {
 		System.out.println("-------------------------------------");
 		help.printList(unsorted); 
 		System.out.println("Bubble Sort end " + index + " iterations");
-	}
-
-	//Selection sort
-//		iterate through array for each index 
-//		each time you encounter a smaller number put it in the current index position
-	// O(N^2)
-	private void selectionSort(int[] unsorted) {
-		System.out.println("Selection Sort start");
-		help.printList(unsorted); 
-		int index = 0;
-		for (int i = 0; i < unsorted.length; i++) {
-			for (int j = i; j < unsorted.length; j++) {
-				index++; 
-				if (unsorted[j] < unsorted[i]) {
-					help.swap(unsorted, i, j);
-					help.printList(unsorted);
-				}
-			}
-		}
-		
 		System.out.println("-------------------------------------");
-		help.printList(unsorted);
-		System.out.println("Selection Sort end " + index + " iterations");
 	}
+	
 	/*
 	 * generate an array of random numbers that can be used to test sort methods
 	 */

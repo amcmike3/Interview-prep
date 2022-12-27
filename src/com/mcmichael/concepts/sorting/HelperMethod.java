@@ -25,5 +25,9 @@ public class HelperMethod {
 		}
 		return copy;
 	}
+	public int[] worstCase() {
+		int[] blah = {10,9,8,7,6,5,4,3,2,1};
+		return blah;
+	}
 
 }
