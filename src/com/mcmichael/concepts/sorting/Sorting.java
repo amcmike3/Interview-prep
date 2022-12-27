@@ -15,16 +15,22 @@ public class Sorting {
 		unsorted = help.copyArray(placeholder);
 		bubbleSort(unsorted);
 		unsorted = help.copyArray(placeholder);
-		insertsionSort(unsorted);
+		insertionSort(unsorted);
 		
 		
 	}
-	private void insertsionSort(int[] unsorted) {
+	/*
+	 * iterate over array comparing the element just outside the sorted portion. 
+	 * if the element just outside is less than the last element in the sorted portion, move it over until it is in the correct position.
+	 * ie. the element in question is greater than the element imediately to its left in the array.
+	 * O(N^2)
+	 */
+	private void insertionSort(int[] unsorted) {
 		System.out.println("Insertion sort start");
 		help.printList(unsorted); 
 		int index = 0;
 
-		for(int i = 0;i < unsorted.length -1; i++) {
+		for(int i = 0; i < unsorted.length -1; i++) {
 			for (int j = i + 1; j > 0; j-- ) {
 				index++;
 				if(unsorted[j] < unsorted[i]) {
