@@ -23,12 +23,51 @@ public class Sorting {
 //		unsorted = help.worstCase();
 		shellSort(unsorted);
 		
+		System.out.println("Merge sort start");
+		help.printList(unsorted);
+
+		unsorted = help.copyArray(placeholder);
+//		unsorted = help.worstCase();
+		mergeSort(unsorted);
+		
+		System.out.println("-------------------------------------");
+		System.out.println("Merge sort end");
+		System.out.println("-------------------------------------");
+		
 		
 	}
 	/*
+	 * merge sort operates much better because it uses divide and conquer.
+	 * it uses divide and conquer by recursively breaking down the list.
+	 */
+	private void mergeSort(int[] unsorted) {
+		
+		if (unsorted.length == 1) {
+			return;
+		}
+		
+		int midIndex = unsorted.length / 2 + unsorted.length % 2;
+		int[] firstHalf = new int[midIndex];
+		int[] secondHalf = new int[unsorted.length - midIndex];
+		help.split(unsorted, firstHalf, secondHalf);
+		
+		mergeSort(firstHalf);
+		mergeSort(secondHalf);
+		
+		
+		help.merge(unsorted, firstHalf, secondHalf);
+		help.printList(unsorted);
+		
+		
+
+	}
+	
+	
+	/*
 	 * separate original list into many smaller lists and then use insertion sort on the smaller lists
 	 * this creates a list that is nearly sorted before a final insertion sort is performed on the nearly sorted list.
-
+	 * complexity can only be said to be better than insertion sort somewhere between O(n) and O(N^2)
+	 * this is because it depends on what the increment is even though there is no science proving one increment it better than another
 	 */
 	private void shellSort(int [] unsorted) {
 		System.out.println("Shell sort start");
