@@ -15,5 +15,15 @@ public class HelperMethod {
 		System.out.println();
 		
 	}
+	
+	public int[] copyArray(int[] original) {
+		int[] copy = new int[original.length];
+		int index = 0;
+		for (int i : original) {
+			copy[index] = original[index];
+			index++;
+		}
+		return copy;
+	}
 
 }
