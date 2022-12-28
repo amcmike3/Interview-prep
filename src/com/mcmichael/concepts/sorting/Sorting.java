@@ -56,7 +56,10 @@ public class Sorting {
 	 * the pivot is an element in the list which we can compare other elements to.
 	 * sort all elements smaller than the pivot on one side and everything larger on the other
 	 * this will happen for every sublist during the divide and conquer
-	 * 
+	 *Quick sort is not adaptive
+	 *quick sort takes extra memory O(N)
+	 *quick sort is not a stable sort  
+	 *quick sort is prefered generally over merge sort because its operations are more easily cached 
 	 * O(NLogN)
 	 */
 	public void quickSort(int[] unsorted, int low, int high) {
