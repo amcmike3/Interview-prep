@@ -251,21 +251,20 @@ public class Sorting {
 	  * if it is smaller remove right half. 
 	  * continue until the number of element can no longer be split in half 
 	  * or the number being searched for is found.
+	  * O(LogN)
 	  */
 	private int binarySearch(int[] arr, int num) {
 		 int left = 0;
 		 int right = arr.length - 1;
-		 int center = arr.length / 2;
 		 
 		 while (left <= right) {
+			 int center = left +(right - left) / 2;
 			 if (num == arr[center]) {
 				 return center;
 			 } else if (num < arr[center]) {
-				 right = center;
-				 center = center / 2;
+				 right = center - 1;
 			 } else if (num > arr[center]) {
-				 left = center;
-				 center += center / 2;
+				 left = center + 1;
 			 }
 		 }
 
