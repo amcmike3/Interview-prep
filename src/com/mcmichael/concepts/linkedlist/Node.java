@@ -9,7 +9,12 @@ public class Node<T extends Comparable<T>> {
 		this.data = data;
 		setNext(null);
 	}
-
+	
+	public Node(T data, Node<T> next) {
+		this.data = data;
+		this.next = next;
+	}
+	
 	public Node<T> getNext() {
 		return next;
 	}
