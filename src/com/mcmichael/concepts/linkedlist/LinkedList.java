@@ -32,4 +32,13 @@ public class LinkedList<T extends Comparable<T>> implements Cloneable {
 		}
 	}
 
+	public T popElement() {
+		if (head != null) {
+			T topElement = head.getData();
+			head = head.getNext();
+			return topElement;
+		}
+		return null;
+	}
+
 }
