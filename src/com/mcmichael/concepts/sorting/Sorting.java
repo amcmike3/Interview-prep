@@ -245,4 +245,30 @@ public class Sorting {
 		
 		return randArr;
 	}
+	 /*
+	  * Binary search only works on sorted lists. 
+	  * Find the center compare to the number you're looking for if its greater remove left half
+	  * if it is smaller remove right half. 
+	  * continue until the number of element can no longer be split in half 
+	  * or the number being searched for is found.
+	  */
+	private int binarySearch(int[] arr, int num) {
+		 int left = 0;
+		 int right = arr.length - 1;
+		 int center = arr.length / 2;
+		 
+		 while (left <= right) {
+			 if (num == arr[center]) {
+				 return center;
+			 } else if (num < arr[center]) {
+				 right = center;
+				 center = center / 2;
+			 } else if (num > arr[center]) {
+				 left = center;
+				 center += center / 2;
+			 }
+		 }
+
+		return -1;
+	}
 }
