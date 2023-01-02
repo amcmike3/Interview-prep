@@ -5,7 +5,8 @@ import com.mcmichael.concepts.stacksandqueues.Queue;
 import com.mcmichael.concepts.stacksandqueues.QueueOverFlowException;
 
 public class BreadthFirstTraversal {
-	public void breadthFirst(TreeNode root) throws QueueOverFlowException, QueUnderflowException{
+	
+	public static void breadthFirst(TreeNode root) throws QueueOverFlowException, QueUnderflowException{
 		if (root == null) {
 			return;
 		}
