@@ -35,7 +35,7 @@ public class Queue<T> {
 		
 	}
 	
-	public T dequeue(T data) throws QueUnderflowException {
+	public T dequeue() throws QueUnderflowException {
 		if (isEmpty()) {
 			throw new QueUnderflowException();
 		}
