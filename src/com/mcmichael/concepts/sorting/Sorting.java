@@ -42,12 +42,23 @@ public class Sorting {
 		
 		unsorted = help.copyArray(placeholder);
 //		unsorted = help.worstCase();
+		int [] sorted = unsorted;
 		quickSort(unsorted, 0, unsorted.length - 1);
 		
 		System.out.println("-------------------------------------");
 		help.printList(unsorted);
 		System.out.println("Quick sort end");
 		System.out.println("-------------------------------------");
+		
+		
+		System.out.println("-------------------------------------");
+		System.out.println("Binary search 1: " + binarySearch(sorted, 5));
+		System.out.println("-------------------------------------");
+		
+		System.out.println("-------------------------------------");
+		System.out.println("Binary search 1: " + binarySearch2(sorted, 5));
+		System.out.println("-------------------------------------");
+		
 		
 	}
 	/*
@@ -253,7 +264,7 @@ public class Sorting {
 	  * or the number being searched for is found.
 	  * O(LogN)
 	  */
-	private int binarySearch(int[] arr, int num) {
+	public int binarySearch(int[] arr, int num) {
 		 int left = 0;
 		 int right = arr.length - 1;
 		 
@@ -270,4 +281,23 @@ public class Sorting {
 
 		return -1;
 	}
+	//second implementation of the same
+	public int binarySearch2(int[] n, int findMe){
+		  int left = 0;
+		  int right = n.length - 1;
+		  int index = -1;
+
+		  while (left <= right){
+		    int mid = (right + left) / 2;
+		    if (findMe > n[mid]){
+		      left = mid + 1;
+		    } else if (findMe < n[mid]){
+		      right = mid - 1;
+		    } else {
+		      index = mid;
+		      break;
+		    }
+		  }
+		  return index;
+		}
 }
