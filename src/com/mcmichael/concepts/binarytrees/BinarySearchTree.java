@@ -1,5 +1,8 @@
 package com.mcmichael.concepts.binarytrees;
 
+import java.util.Queue;
+import java.util.concurrent.LinkedBlockingQueue;
+
 public class BinarySearchTree {
 	public static void main(String[] args) {
 		TreeNode<Integer> head = new TreeNode<Integer>(8);
@@ -10,7 +13,7 @@ public class BinarySearchTree {
 		insert(head, new TreeNode<Integer>(16));
 		insert(head, new TreeNode<Integer>(18));
 		
-		System.out.println(lookup(head, 14).getData());
+		System.out.println(lookup(head, 14));
 	}
 	
 
@@ -31,16 +34,21 @@ public class BinarySearchTree {
 	public static TreeNode<Integer> lookup(TreeNode<Integer> head, int data){
 		if (head == null) {
 			return null;
-		}
-		if (head.getData() == data) {
+		} else if (head.getData() == data) {
 			return head;
-		}
-		
-		if (data <= head.getData()) {
+		}else if (data <= head.getData()) {
 			return lookup(head.getLeftChild(), data);
 		} else {
 			return lookup(head.getRightChild(), data);
 		}
+		
+	}
+	
+	public static void printTree(TreeNode<Integer> head) {
+		Queue q = new LinkedBlockingQueue();
+		System.out.println(head);
+		
+		
 		
 	}
 
