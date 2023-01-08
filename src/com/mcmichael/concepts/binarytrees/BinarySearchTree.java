@@ -14,6 +14,7 @@ public class BinarySearchTree {
 		insert(head, new TreeNode<Integer>(18));
 		
 		System.out.println(lookup(head, 14));
+		printTree(head);
 	}
 	
 
@@ -45,8 +46,12 @@ public class BinarySearchTree {
 	}
 	
 	public static void printTree(TreeNode<Integer> head) {
-		Queue q = new LinkedBlockingQueue();
+		if (head == null ) {
+			return;
+		}
 		System.out.println(head);
+		printTree(head.getLeftChild());
+		printTree(head.getRightChild());
 		
 		
 		
