@@ -2,7 +2,6 @@ package com.mcmichael.concepts.binarytrees;
 
 public class BinaryTrees {
 	
-
 	
 //	find the deepest level of the given tree
 	private Integer maxDepthBinaryTree(TreeNode<Integer> head){
@@ -54,6 +53,40 @@ public class BinaryTrees {
 		return sum;
 	}
 	
+	// check if given binary tree is actually a binary search tree
+	// This does not work because it will eventually get a null pointer exception 
+	// when the head has no child and head.get...Child().getData() is called
+	// a implementation to prevent this is to pass a min and max to the method
+	// which is just below this method
+//	private static boolean isBST(TreeNode<Integer> head) {
+//		if (head == null) {
+//			return true;
+//		}
+//		
+//		if (head.getLeftChild().getData() <= head.getData() && head.getRightChild().getData() >= head.getData() ) {
+//			if(isBST(head.getLeftChild()) && isBST(head.getRightChild())) {
+//				return true;
+//			}
+//		}
+//		
+//		return false;
+//	}
+	// as we traverse left max value changes to the current node value
+	// as we traverse right the min value changes to the current node value
+	private boolean isBinarySearchTree(TreeNode<Integer> head, int min, int max) {
+		if (head == null) {
+			return true;
+		}
+		
+		if (head.getData() <= min || head.getData() > max) {
+			
+			return false;
+		}
+
+		return isBinarySearchTree(head.getLeftChild(), min, head.getData())
+				&& isBinarySearchTree(head, head.getData(), max);
+	}
+	
 	public static void printTree(TreeNode<Integer> head) {
 		if (head == null ) {
 			return;
@@ -65,5 +98,6 @@ public class BinaryTrees {
 		
 		
 	}
+	
 
 }
