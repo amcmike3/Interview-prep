@@ -14,7 +14,7 @@ public class BinarySearchTree {
 		insert(head, new TreeNode<Integer>(18));
 		
 		System.out.println(lookup(head, 14));
-		printTree(head);
+		BinaryTrees.printTree(head);
 	}
 	
 
@@ -45,16 +45,39 @@ public class BinarySearchTree {
 		
 	}
 	
-	public static void printTree(TreeNode<Integer> head) {
-		if (head == null ) {
-			return;
+	
+	
+	// find the smallest value within a Binary Search Tree
+	private Integer minimumValueInBinarySearchTree(TreeNode<Integer> head){
+		if (head == null) {
+			return Integer.MIN_VALUE;
 		}
-		System.out.println(head);
-		printTree(head.getLeftChild());
-		printTree(head.getRightChild());
+		
+		if (head.getLeftChild() == null) {
+			return head.getData();
+		}
 		
 		
-		
+		return minimumValueInBinarySearchTree(head.getLeftChild());
 	}
+	
+	//print all values in a Binary Search Tree that are within a specified range inclusive
+		private void printNodesInRange(TreeNode<Integer> head, Integer low, Integer high) {
+			if (head == null) {
+				return;
+			}
+			
+			if (head.getData() >= low && head.getData() <= high) {
+				System.out.println(head.getData());
+			}
+			
+			if(head.getData() >= low) {
+				printNodesInRange(head.getLeftChild(), low, high);
+			}
+			
+			if(head.getData() <= high) {
+				printNodesInRange(head.getRightChild(), low, high);
+			}
+		}
 
 }

@@ -2,19 +2,7 @@ package com.mcmichael.concepts.binarytrees;
 
 public class BinaryTrees {
 	
-	// find the smallest value within a Binary Search Tree
-	private Integer minimumValueInBinarySearchTree(TreeNode<Integer> head){
-		if (head == null) {
-			return Integer.MIN_VALUE;
-		}
-		
-		if (head.getLeftChild() == null) {
-			return head.getData();
-		}
-		
-		
-		return minimumValueInBinarySearchTree(head.getLeftChild());
-	}
+
 	
 //	find the deepest level of the given tree
 	private Integer maxDepthBinaryTree(TreeNode<Integer> head){
@@ -66,23 +54,16 @@ public class BinaryTrees {
 		return sum;
 	}
 	
-	//print all values in a Binary Search Tree that are within a specified range inclusive
-	private void printNodesInRange(TreeNode<Integer> head, Integer low, Integer high) {
-		if (head == null) {
+	public static void printTree(TreeNode<Integer> head) {
+		if (head == null ) {
 			return;
 		}
+		System.out.println(head);
+		printTree(head.getLeftChild());
+		printTree(head.getRightChild());
 		
-		if (head.getData() >= low && head.getData() <= high) {
-			System.out.println(head.getData());
-		}
 		
-		if(head.getData() >= low) {
-			printNodesInRange(head.getLeftChild(), low, high);
-		}
 		
-		if(head.getData() <= high) {
-			printNodesInRange(head.getRightChild(), low, high);
-		}
 	}
 
 }
