@@ -51,5 +51,27 @@ public abstract class BinaryHeap<T extends Comparable> {
 		}
 		return (index - 1) / 2;
 	}
+	
+	protected void swap(int index1, int index2) {
+		T tempVal = array[index1];
+		array[index1] = array[index2];
+		array[index2] = tempVal;
+	}
+	
+	public int getCount () {
+		return count;
+	}
+	
+	public boolean isEmpty() {
+		return count == 0;
+	}
+	
+	public boolean isFull() {
+		return count == array.length;
+	}
+	
+	public T getElementAtIndex(int index) {
+		return array[index];
+	}
 
 }
