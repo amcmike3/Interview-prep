@@ -74,4 +74,5 @@ public abstract class BinaryHeap<T extends Comparable> {
 		return array[index];
 	}
 
+	
 }
